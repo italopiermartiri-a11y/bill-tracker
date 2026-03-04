@@ -1,0 +1,32 @@
+{
+  "name": "bill-tracker",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers-contrib/features/poetry:2": {
+      "version": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "esbenp.prettier-vscode",
+        "zxh404.vscode-proto3",
+        "eamodio.gitlens"
+      ],
+      "settings": {
+        "python.pythonPath": "/usr/local/bin/python",
+        "terminal.integrated.shell.linux": "/usr/bin/zsh"
+      }
+    }
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder}/.devcontainer/vscode-cache,target=/home/vscode/.cache,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": "git config --global user.name 'Pititalo' && git config --global user.email 'italo.piermartiri@gmail.com'",
+  "remoteUser": "vscode"
+}

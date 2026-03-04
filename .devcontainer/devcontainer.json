@@ -1,0 +1,56 @@
+{
+  "name": "bill-tracker",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers-extra/features/poetry:2": {},
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "esbenp.prettier-vscode",
+        "zxh404.vscode-proto3",
+        "eamodio.gitlens",
+        "charliermarsh.ruff",
+        "njpwerner.autodocstring"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "./.venv/bin/python",
+        "python.terminal.activateEnvironment": true,
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "ruff.importStrategy": "fromEnvironment",
+        "ruff.interpreterPath": [
+          "${containerWorkspaceFolder}/.venv/bin/python",
+        ],
+        "ruff.path": [
+          "${containerWorkspaceFolder}/.venv/bin/ruff",
+        ],
+        "autoDocstring.docstringFormat": "sphinx",
+        "python.testing.unittestEnabled": false,
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": ["tests"]
+      }
+    }
+  },
+  "containerEnv": {
+    "POETRY_VIRTUALENVS_IN_PROJECT": "true",
+    "WORKSPACE": "${containerWorkspaceFolder}"
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder}/.devcontainer/vscode-cache,target=/home/vscode/.cache,type=bind,consistency=cached"
+  ],
+  "postCreateCommand": {
+    "git-credentials": "git config --global user.name 'Pititalo' && git config --global user.email 'italo.piermartiri@gmail.com'",
+    "poetry": "poetry install --no-root -vvv && poetry run pre-commit install",
+    "tesseract" : "sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-spa libgl1-mesa-glx"
+  },
+  "remoteUser": "vscode"
+}

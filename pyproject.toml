@@ -1,0 +1,31 @@
+[project]
+name = "bill-tracker"
+version = "0.1.0"
+description = "An automated expense tracking system."
+authors = [
+    {name = "Pititalo",email = "italo.piermartiri@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pytesseract (>=0.3.13,<0.4.0)",
+    "pillow (>=12.1.1,<13.0.0)",
+    "opencv-python (>=4.13.0.92,<5.0.0.0)",
+    "numpy (>=2.4.2,<3.0.0)",
+    "fastapi (>=0.135.1,<0.136.0)",
+    "uvicorn (>=0.41.0,<0.42.0)",
+    "dotenv (>=0.9.9,<0.10.0)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "black (>=26.1.0,<27.0.0)",
+    "isort (>=8.0.1,<9.0.0)",
+    "ipykernel (>=7.2.0,<8.0.0)",
+    "pre-commit (>=4.0.0,<5.0.0)"
+]

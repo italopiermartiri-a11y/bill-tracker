@@ -49,7 +49,8 @@
   ],
   "postCreateCommand": {
     "git-credentials": "git config --global user.name 'Pititalo' && git config --global user.email 'italo.piermartiri@gmail.com'",
-    "poetry": "poetry install --no-root -vvv && poetry run pre-commit install"
+    "poetry": "poetry install --no-root -vvv && poetry run pre-commit install",
+    "tesseract" : "sudo apt-get update && sudo apt-get install -y tesseract-ocr tesseract-ocr-spa libgl1-mesa-glx"
   },
   "remoteUser": "vscode"
 }
